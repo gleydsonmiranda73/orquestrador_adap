@@ -1,0 +1,250 @@
+/* Resetando o margin e padding para garantir que o layout ocupe toda a tela */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #383636;
+    /* background-color: #e3e9f7; */
+}
+
+/* Modificando o Main para ajustar ao sidebar */
+main {
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+    transition: margin-left 0.3s ease; /* Animação suave ao mudar a largura */
+    margin-left: 82px; /* Espaçamento inicial do sidebar fechado */
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-color: #ffffff; */
+    background-color: #121214;
+    
+    height: 100vh;
+    border-radius: 0px 18px 18px 0px;
+    position: fixed;
+    transition: all .5s;
+    min-width: 82px;
+    z-index: 2;
+}
+
+/* Conteúdo da sidebar */
+#sidebar_content {
+    padding: 12px;
+}
+
+#user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+#user_avatar {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+#user_infos {
+    display: flex;
+    flex-direction: column;
+}
+
+#user_infos span:last-child {
+    color: #6b6b6b;
+    font-size: 12px;
+}
+
+#side_items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+}
+
+.side-item {
+    border-radius: 8px;
+    padding: 14px;
+    cursor: pointer;
+}
+
+.side-item.active {
+    background-color: #4f46e5;
+}
+
+.side-item:hover:not(.active),
+#logout_btn:hover {
+    background-color: #888a94;
+}
+
+.side-item a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0a0a0a;
+}
+
+.side-item.active a {
+    color: #e3e9f7;
+}
+
+.side-item a i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+}
+
+#logout {
+    border-top: 1px solid #e3e9f7;
+    padding: 12px;
+}
+
+#logout_btn {
+    border: none;
+    padding: 12px;
+    font-size: 14px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    border-radius: 8px;
+    text-align: start;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+#open_btn {
+    position: absolute;
+    top: 30px;
+    right: -10px;
+    background-color: #4f46e5;
+    color: #e3e9f7;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+#open_btn_icon {
+    transition: transform .3s ease;
+}
+
+.open-sidebar #open_btn_icon {
+    transform: rotate(180deg);
+}
+
+/* Estilo de descrição dos itens da sidebar */
+.item-description {
+    width: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    transition: width .6s;
+    height: 0px;
+    color: #fff
+}
+
+/* Sidebar expandida */
+#sidebar.open-sidebar {
+    min-width: 15%;
+}
+
+#sidebar.open-sidebar .item-description {
+    width: 150px;
+    height: auto;
+}
+
+#sidebar.open-sidebar .side-item a {
+    justify-content: flex-start;
+    gap: 14px;
+}
+
+.corpo-pagina {
+    width: 100%;
+    transition: margin-left 0.3s ease; /* Animação suave ao mudar a largura */
+    margin-left: 82px; /* Espaçamento inicial do sidebar fechado */
+}   
+
+/* Ajuste para o main ao abrir a sidebar */
+#sidebar.open-sidebar + .corpo-pagina {
+    margin-left: 15%; /* Ajusta a margem do main quando a sidebar é expandida */
+}
+
+/* Faz o header ocupar toda a largura */
+.main-header {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-between; /* Distribui os cards */
+}
+
+.main-header .maquinas{
+    margin: 2px;
+    width: 33.3%;
+    height: 150%;
+    color: #e3e9f7;
+    /* border: #6b6b6b solid 1px; */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.main-header .maquinas .cima {
+    width: 100%;
+    height: 60%;
+    background: url("../images/zeus.png");
+    /* background: linear-gradient(rgba(54, 53, 53, 0.8), rgba(34, 33, 33, 0.8)), url("../images/teste.webp"); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.main-header .maquinas .cima p {
+    display: inline-block; 
+    padding: 5px 10px; 
+    background-color: #000000;
+    color: #E5B929; 
+    border-radius: 5px;
+    margin: 15px 0 0 15px;
+}
+
+.main-header .maquinas .baixo{
+    width: 100%; 
+    height: 50%;
+    background-color: #09090A; 
+    border-radius: 0 0 8px 8px; 
+    display: flex;
+    align-items: center;
+}                            
+
+.main-header .maquinas .baixo .circulo {
+    width: 60px;
+    height: 50px;
+    background-color: #807BE9; 
+    border-radius: 8px; 
+    margin-left: 15px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.main-header .maquinas .baixo .circulo p{
+    color: #ffffff;
+}
